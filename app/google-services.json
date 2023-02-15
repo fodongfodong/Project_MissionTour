@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "927734929627",
+    "project_id": "missiontour-cbadf",
+    "storage_bucket": "missiontour-cbadf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:927734929627:android:72870e9ea2569b197354fe",
+        "android_client_info": {
+          "package_name": "kr.co.missiontour.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "927734929627-9n3hrdqcd8nte24mrqh6n2eflldqpbvo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.co.missiontour.app",
+            "certificate_hash": "5b54a3a935b898246233932e131c33d2d994824d"
+          }
+        },
+        {
+          "client_id": "927734929627-0pldgloe9uh4ah934emnsjsmemrkl35j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbSp8c4xEK3vRzRB5wt7gzPfQ-4ZfWsTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "927734929627-0pldgloe9uh4ah934emnsjsmemrkl35j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

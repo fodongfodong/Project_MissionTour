@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--
+    // 기본 스타일 //
+    -->
+    <item><shape>
+        <!-- 배경 -->		<gradient android:startColor="#ffffff" android:endColor="#ffffff" android:angle="270" />
+        <!-- 외각선 -->	    <stroke android:width="1px" android:color="#E3E3E3"/>
+        <!-- 외각모양 -->	<corners android:radius="0dp"/>
+        <!-- 내부여백 -->	<padding android:left="0dp" android:right="0dp" android:top="0dp" android:bottom="0dp" />
+    </shape></item>
+</selector>

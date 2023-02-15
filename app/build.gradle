@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+
+
+android {
+
+    useLibrary 'org.apache.http.legacy'
+
+    compileSdkVersion 31
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        applicationId "kr.co.missiontour.app"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 12
+        versionName "1.0.11"
+        multiDexEnabled true
+        generatedDensities = [] //v7 하위버전에서 에러 발생시
+    }
+    aaptOptions {
+        additionalParameters "--no-version-vectors" //v7 하위버전에서 에러 발생시
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            zipAlignEnabled true // apk 최적화
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'
+
+    androidTestImplementation 'junit:junit:4.12'
+
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+//    implementation 'com.wang.avi:library:2.1.3'
+    implementation files('libs/Lib-WatosysUtils_1.1.2.jar')
+    implementation 'com.google.android.play:core:1.9.1'
+    implementation group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
+    //implementation "com.kakao.sdk:v2-all:2.11.0" // 전체 모듈 설치, 2.11.0 버전부터 지원
+
+
+    /** GPS 관련 **/
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+
+
+}

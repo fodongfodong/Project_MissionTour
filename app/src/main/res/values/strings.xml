@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">미션투어</string>
+    <string name="str_app_update_txt">서비스 안정화를 위해 최신버전으로 업데이트가 필요합니다.</string>
+    <string name="str_app_no_update_txt">앱이 업데이트 되지 않아 이용할 수 없습니다. 앱을 종료합니다.</string>
+    <string name="str_start_download">첨부파일을 다운로드 합니다.</string>
+<!--    <string name="kakao_app_key">e242c9f512ef5e4fdc0d57ec87121266</string>-->
+<!--    <string name="kakao_app_key">59cbd5e80d48f22d9bc6f04fb4e035bb</string>-->
+    <string name="kakao_app_key">6d64db54764c7724e16795d35590e4d9</string>
+<!--    <string name="Key_hash">Hi1AmqXlId90okEBjFK4WGA2pYw=</string>-->
+
+
+
+
+</resources>
