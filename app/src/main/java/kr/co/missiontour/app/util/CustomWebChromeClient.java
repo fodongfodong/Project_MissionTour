@@ -6,16 +6,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.webkit.ConsoleMessage;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JsResult;
@@ -55,7 +51,7 @@ public class CustomWebChromeClient extends WebChromeClient {
 
     private Context mContext = null;
     public CustomWebChromeClient(Context context) {
-        mActivity = (Activity) context;
+//        mActivity = (Activity) context;
         mContext = context;
         //cwcc = this;
     }
@@ -167,7 +163,7 @@ public class CustomWebChromeClient extends WebChromeClient {
         Intent i = new Intent(Intent.ACTION_GET_CONTENT);
         i.addCategory(Intent.CATEGORY_OPENABLE);
         i.setType("image/*");
-        mActivity.startActivityForResult(Intent.createChooser(i, "File Chooser"), WEBVIEW_REQ_CODE);
+//        mActivity.startActivityForResult(Intent.createChooser(i, "File Chooser"), WEBVIEW_REQ_CODE);
     }
 
     //For Android 4.1+
@@ -176,9 +172,10 @@ public class CustomWebChromeClient extends WebChromeClient {
         Intent i = new Intent(Intent.ACTION_GET_CONTENT);
         i.addCategory(Intent.CATEGORY_OPENABLE);
         i.setType("*/*");
-        mActivity.startActivityForResult(
-                Intent.createChooser(i, "File Browser"),
-                WEBVIEW_REQ_CODE_PRE_LOLLIPOP);
+////        mActivity.startActivityForResult
+//        (
+//                Intent.createChooser(i, "File Browser"),
+//                WEBVIEW_REQ_CODE_PRE_LOLLIPOP);
     }
 
 
@@ -198,28 +195,28 @@ public class CustomWebChromeClient extends WebChromeClient {
 
         // Set up the take picture intent
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
-            // Create the File where the photo should go
-
-
-            File photoFile = null;
-            try {
-                photoFile = createImageFile();
-                takePictureIntent.putExtra("PhotoPath", mCameraPhotoPath);
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-                Log.e("1", "Unable to create Image File", ex);
-            }
-
-            // Continue only if the File was successfully created
-            if (photoFile != null) {
-                mCameraPhotoPath = "file:" + photoFile.getAbsolutePath();
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(photoFile));
-            } else {
-                takePictureIntent = null;
-            }
-        }
+//        if (takePictureIntent.resolveActivity(mActivity.getPackageManager()) != null) {
+//            // Create the File where the photo should go
+//
+//
+//            File photoFile = null;
+//            try {
+//                photoFile = createImageFile();
+//                takePictureIntent.putExtra("PhotoPath", mCameraPhotoPath);
+//            } catch (IOException ex) {
+//                // Error occurred while creating the File
+//                Log.e("1", "Unable to create Image File", ex);
+//            }
+//
+//            // Continue only if the File was successfully created
+//            if (photoFile != null) {
+//                mCameraPhotoPath = "file:" + photoFile.getAbsolutePath();
+//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+//                        Uri.fromFile(photoFile));
+//            } else {
+//                takePictureIntent = null;
+//            }
+//        }
         // Set up the intent to get an existing image
         Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
         contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -240,7 +237,7 @@ public class CustomWebChromeClient extends WebChromeClient {
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentArray);
 
 
-        mActivity.startActivityForResult(chooserIntent, WEBVIEW_REQ_CODE);
+//        mActivity.startActivityForResult(chooserIntent, WEBVIEW_REQ_CODE);
 
         return true;
     }
@@ -310,71 +307,71 @@ public class CustomWebChromeClient extends WebChromeClient {
     }
 
     //----------- 동영상 ------------------//
-    private Activity mActivity = null;
-    private boolean FULLSCREEN = false;
-    public boolean isFullScreen() {
-        return FULLSCREEN;
-    }
-    public View mCustomVideoView;
-    private CustomViewCallback mCustomViewCallback;
-    private int mOriginalOrientation;
+//    private Activity mActivity = null;
+//    private boolean FULLSCREEN = false;
+//    public boolean isFullScreen() {
+//        return FULLSCREEN;
+//    }
+//    public View mCustomVideoView;
+//    private CustomViewCallback mCustomViewCallback;
+//    private int mOriginalOrientation;
+//
+//    private FrameLayout mContentView;
+//    private FrameLayout mFullscreenContainer;
+//
+//    private final FrameLayout.LayoutParams COVER_SCREEN_PARAMS = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//
+//    public void onShowCustomView(View view, CustomViewCallback callback) {
+//
+//        if (Build.VERSION.SDK_INT >= 14) {
+//            if (mCustomVideoView != null) {
+//                callback.onCustomViewHidden();
+//                return;
+//            }
+//
+//            //mOriginalOrientation = getRequestedOrientation();
+//            FrameLayout decor = (FrameLayout) mActivity.getWindow().getDecorView();
+//            mFullscreenContainer = new FullscreenHolder(mActivity);
+//            mFullscreenContainer.addView(view, COVER_SCREEN_PARAMS);
+//            decor.addView(mFullscreenContainer, COVER_SCREEN_PARAMS);
+//            mCustomVideoView = view;
+//            setFullscreen(true);
+//            mCustomViewCallback = callback;
+//        }
+//        super.onShowCustomView(view, callback);
+//
+//    }
 
-    private FrameLayout mContentView;
-    private FrameLayout mFullscreenContainer;
-
-    private final FrameLayout.LayoutParams COVER_SCREEN_PARAMS = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-    public void onShowCustomView(View view, CustomViewCallback callback) {
-
-        if (Build.VERSION.SDK_INT >= 14) {
-            if (mCustomVideoView != null) {
-                callback.onCustomViewHidden();
-                return;
-            }
-
-            //mOriginalOrientation = getRequestedOrientation();
-            FrameLayout decor = (FrameLayout) mActivity.getWindow().getDecorView();
-            mFullscreenContainer = new FullscreenHolder(mActivity);
-            mFullscreenContainer.addView(view, COVER_SCREEN_PARAMS);
-            decor.addView(mFullscreenContainer, COVER_SCREEN_PARAMS);
-            mCustomVideoView = view;
-            setFullscreen(true);
-            mCustomViewCallback = callback;
-        }
-        super.onShowCustomView(view, callback);
-
-    }
-
-    public void onHideCustomView() {
-        if (mCustomVideoView == null) {
-            return;
-        }
-        setFullscreen(false);
-        FrameLayout decor = (FrameLayout) mActivity.getWindow().getDecorView();
-        decor.removeView(mFullscreenContainer);
-        mFullscreenContainer = null;
-        mCustomVideoView = null;
-        mCustomViewCallback.onCustomViewHidden();
-        //setRequestedOrientation(mOriginalOrientation);
-    }
-
-    private void setFullscreen(boolean enabled) {
-        FULLSCREEN = enabled;
-        Window win = mActivity.getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-        if (enabled) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-            if (mCustomVideoView != null) {
-                mCustomVideoView.setVisibility(View.VISIBLE);
-            } else {
-                mContentView.setVisibility(View.VISIBLE);
-            }
-        }
-        win.setAttributes(winParams);
-    }
+//    public void onHideCustomView() {
+//        if (mCustomVideoView == null) {
+//            return;
+//        }
+//        setFullscreen(false);
+//        FrameLayout decor = (FrameLayout) mActivity.getWindow().getDecorView();
+//        decor.removeView(mFullscreenContainer);
+//        mFullscreenContainer = null;
+//        mCustomVideoView = null;
+//        mCustomViewCallback.onCustomViewHidden();
+//        //setRequestedOrientation(mOriginalOrientation);
+//    }
+//
+//    private void setFullscreen(boolean enabled) {
+//        FULLSCREEN = enabled;
+//        Window win = mActivity.getWindow();
+//        WindowManager.LayoutParams winParams = win.getAttributes();
+//        final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+//        if (enabled) {
+//            winParams.flags |= bits;
+//        } else {
+//            winParams.flags &= ~bits;
+//            if (mCustomVideoView != null) {
+//                mCustomVideoView.setVisibility(View.VISIBLE);
+//            } else {
+//                mContentView.setVisibility(View.VISIBLE);
+//            }
+//        }
+//        win.setAttributes(winParams);
+//    }
 
     class FullscreenHolder extends FrameLayout {
         //    	private boolean close = true;

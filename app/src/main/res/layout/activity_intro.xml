@@ -20,7 +20,7 @@
             android:visibility="visible"
             android:scaleType="centerCrop"
             android:layout_centerInParent="true"
-            android:background="@drawable/intro2208"/>
+            android:background="@drawable/intro2688"/>
 
 
     </RelativeLayout>
